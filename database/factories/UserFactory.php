@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Company;
 use App\Models\Role;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
@@ -15,6 +16,7 @@ class UserFactory extends Factory
     {
         return [
             'role_id' => Role::factory()->createOne()->id,
+            'company_id' => Company::factory()->createOne()->id,
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),

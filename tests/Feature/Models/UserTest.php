@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Company;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -9,6 +10,7 @@ uses(RefreshDatabase::class);
 dataset('users', [
     fn () => [
         'role_id' => Role::factory()->createOne()->id,
+        'company_id' => Company::factory()->createOne()->id,
         'name' => fake()->name,
         'email' => fake()->email,
         'password' => fake()->password,

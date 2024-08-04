@@ -10,6 +10,8 @@ return new class extends Migration
     {
         Schema::create('todos', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique()->index();
+            $table->foreignId('user_id')->constrained();
             $table->string('title');
             $table->timestamps();
             $table->softDeletes();

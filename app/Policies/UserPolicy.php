@@ -11,4 +11,9 @@ class UserPolicy
     {
         return Str::lower($user->role->name) === 'admin';
     }
+
+    public function isOwner(User $user): bool
+    {
+        return Str::lower($user->role->name) === 'owner';
+    }
 }

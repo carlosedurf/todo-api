@@ -10,14 +10,14 @@ class TodoPolicy
 {
     use HandlesAuthorization;
 
-    public function __construct(protected readonly UserPolicy $userPolicy)
-    {}
+    public function __construct(protected readonly UserPolicy $userPolicy) {}
 
     public function before(User $user): ?bool
     {
         if ($this->userPolicy->isAdmin($user)) {
             return true;
         }
+
         return null;
     }
 

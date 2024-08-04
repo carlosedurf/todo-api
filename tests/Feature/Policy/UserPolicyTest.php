@@ -13,7 +13,7 @@ test('User is Admin', function () {
     $role = Role::factory()->createOne(['name' => 'Admin']);
     $role->abilities()->attach($ability);
     $user = User::factory()->createOne(['role_id' => $role->id]);
-    $policy = new UserPolicy();
+    $policy = new UserPolicy;
     expect($policy->isAdmin($user))->toBeTrue();
 });
 
@@ -22,6 +22,6 @@ test('Failed User is not Admin', function () {
     $role = Role::factory()->createOne();
     $role->abilities()->attach($ability);
     $user = User::factory()->createOne(['role_id' => $role->id]);
-    $policy = new UserPolicy();
+    $policy = new UserPolicy;
     expect($policy->isAdmin($user))->toBeFalse();
 });

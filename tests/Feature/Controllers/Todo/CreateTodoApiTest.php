@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Todo\Permission\TodoAbilityEnum;
 use App\Models\Ability;
 use App\Models\Todo;
 use App\Models\User;
@@ -16,7 +17,7 @@ it('Failed create todo send without auth', function () {
 it('Can create todo send with auth', function () {
     $payload = ['title' => fake()->title];
     $user = User::factory()->createOne();
-    $ability = Ability::factory()->createOne(['slug' => 'create-todo']);
+    $ability = Ability::factory()->createOne(['slug' => TodoAbilityEnum::CREATE_TODOS]);
     $user->role->abilities()->attach($ability);
     $response = $this->withHeaders([
         'Authorization' => 'Bearer '.$user->createToken('Token')->plainTextToken,
